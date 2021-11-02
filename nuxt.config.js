@@ -22,6 +22,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vue-placeholders.js',
+    '~/plugins/vue-observe-visibility.client.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -29,6 +31,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -37,5 +40,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    styleResources: {
+      scss: ['~/assets/styles/tokens.scss']
+    },
   }
 }
