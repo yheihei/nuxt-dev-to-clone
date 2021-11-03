@@ -4,6 +4,9 @@
       <article-card-block
         v-for="(article, i) in articles"
         :key="article.id"
+        v-observe-visibility="
+          i === articles.length - 1 ? lazyLoadArticles : false
+        "
         :article="article"
         class="article-card-block"
       />
@@ -28,8 +31,18 @@ export default {
     const articles = await fetch(
       `https://dev.to/api/articles?tag=nuxt&state=rising&page=${this.currentPage}`
     ).then(res => res.json())
+    console.log(articles)
     this.articles = this.articles.concat(articles)
-    console.log(this.articles)
+  },
+  methods: {
+    lazyLoadArticles(isVisible) {
+      if (isVisible) {
+        if (this.currentPage < 5) {
+          this.currentPage++
+          this.$fetch()
+        }
+      }
+    }
   },
 }
 </script>
