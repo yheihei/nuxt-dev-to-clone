@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style>
-img {
+.image-wrapper img {
   width: 400px;
 }
 </style>
