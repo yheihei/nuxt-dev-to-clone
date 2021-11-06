@@ -1,3 +1,6 @@
+import Sass from 'sass'
+import Fiber from 'fibers'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -12,12 +15,14 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    { src: '~/assets/scss/common.scss' },
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -36,12 +41,21 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/style-resources',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     styleResources: {
-      scss: ['~/assets/styles/tokens.scss']
+      scss: ['~/assets/scss/_variable.scss'],
     },
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper container">
     <div class="article-content-wrapper">
       <article-block class="article-block" />
       <aside-username-block class="aside-username-block"></aside-username-block>
@@ -21,3 +21,18 @@
     }
   }
 </script>
+
+<style>
+.article-content-wrapper {
+  display: flex;
+  padding: 2rem 0;
+}
+
+.article-block {
+  width: 70%;
+}
+
+.aside-username-block {
+  width: 30%;
+}
+</style>

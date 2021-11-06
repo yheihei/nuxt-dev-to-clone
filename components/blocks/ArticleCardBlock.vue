@@ -1,16 +1,17 @@
 <template>
-  <nuxt-link :to="{ name: 'username-article', params: { username: article.user.username, article: article.id } }" tag="article">
+  <nuxt-link class="article-card-block" :to="{ name: 'username-article', params: { username: article.user.username, article: article.id } }" tag="article">
     <div class="image-wrapper">
       <img 
         v-if="article.cover_image"
         :src="article.cover_image"
         :alt="article.title"
+        class="article-card-block__image"
       />
-      <img v-else :src="article.social_image" :alt="article.title"/>
+      <img v-else :src="article.social_image" :alt="article.title" class="article-card-block__image"/>
     </div>
-    <div class="content">
+    <div class="article-card-block__content">
       <nuxt-link :to="{ name: 'username-article', params: { username: article.user.username, article: article.id } }">
-        <h1>{{ article.title }}</h1>
+        <h1 class="article-card-block__title">{{ article.title }}</h1>
       </nuxt-link>
       <div class="tags">
         <nuxt-link
@@ -49,8 +50,21 @@ export default {
 }
 </script>
 
-<style>
-.image-wrapper img {
-  width: 400px;
+<style lang="scss" scoped>
+.article-card-block {
+  box-shadow: 2px 2px 8px #dcdcdc;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-decoration: none;
+  }
 }
 </style>

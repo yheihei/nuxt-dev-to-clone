@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper container">
     <template v-if="$fetchState.pending">
       <div class="article-cards-wrapper">
         <content-placeholders
@@ -26,7 +26,6 @@
             i === articles.length - 1 ? lazyLoadArticles : false
           "
           :article="article"
-          class="article-card-block"
         />
       </div>
     </template>
@@ -65,3 +64,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.article-cards-wrapper {
+  padding: 5rem 0;
+  display:grid;
+  row-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+}
+</style>

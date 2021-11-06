@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <aside class="aside-username-block">
     <template v-if="user">
       <div>username: {{ user.name }}</div>
       <div v-if="user.twitter_username">twitter_username: @{{ user.twitter_username }}</div>
