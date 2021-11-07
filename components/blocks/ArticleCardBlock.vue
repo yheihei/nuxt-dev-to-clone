@@ -1,6 +1,6 @@
 <template>
   <nuxt-link class="article-card-block" :to="{ name: 'username-article', params: { username: article.user.username, article: article.id } }" tag="article">
-    <div class="image-wrapper">
+    <div class="article-card-block__image-wrapper">
       <img 
         v-if="article.cover_image"
         :src="article.cover_image"
@@ -22,17 +22,17 @@
           #{{ tag }}
         </nuxt-link>
       </div>
-      <div class="meta">
-        <div class="scl">
-          <span>
+      <div class="article-card-block__meta">
+        <div>
+          <span class="article-card-block__meta_item">
             いいね
             {{ article.positive_reactions_count }}
           </span>
-          <span>
+          <span class="article-card-block__meta_item">
             コメント
             {{ article.comments_count }}
           </span>
-          <time>{{ article.readable_publish_date }}</time>
+          <time class="article-card-block__meta_item">{{ article.readable_publish_date }}</time>
         </div>
       </div>
     </div>
@@ -52,19 +52,31 @@ export default {
 
 <style lang="scss" scoped>
 .article-card-block {
-  box-shadow: 2px 2px 8px #dcdcdc;
+  box-shadow: 2px 2px 8px $shadowColor;
+  position: relative;
+  padding-bottom: 2rem;
 
   &__image {
     width: 100%;
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-decoration: none;
+    padding-bottom: 1rem;
   }
 
   &__content {
     padding: 1rem;
   }
 
-  &__title {
-    font-size: 2rem;
-    text-decoration: none;
+  &__meta {
+    position: absolute;
+    bottom: 1rem;
+  }
+
+  &__meta_item {
+    padding-right: .5rem;
   }
 }
 </style>

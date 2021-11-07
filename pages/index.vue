@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 .article-cards-wrapper {
-  padding: 5rem 0;
+  // padding: 5rem 0;
   display:grid;
   row-gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
