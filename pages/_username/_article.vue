@@ -26,10 +26,11 @@
 .article-content-wrapper {
   display: flex;
   padding: 2rem 0;
+  justify-content: space-between;
 }
 
 .article-block {
-  width: 70%;
+  width: 65%;
 }
 
 .aside-username-block {
