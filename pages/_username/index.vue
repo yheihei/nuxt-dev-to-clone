@@ -1,7 +1,18 @@
 <template>
-  <Tutorial/>
+  <div class="page-wrapper container">
+    <username-block />
+    <username-articles-block />
+  </div>
 </template>
 
 <script>
-export default {}
+import UsernameBlock from '@/components/blocks/UsernameBlock'
+import UsernameArticlesBlock from '@/components/blocks/UsernameArticlesBlock'
+
+export default {
+  components: {
+    UsernameBlock,
+    UsernameArticlesBlock
+  }
+}
 </script>
