@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper container">
     <username-block />
-    <username-articles-block />
+    <username-articles-block class="mt-5" />
   </div>
 </template>
 
