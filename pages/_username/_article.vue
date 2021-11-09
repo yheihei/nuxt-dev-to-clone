@@ -27,6 +27,7 @@
   display: flex;
   padding: 2rem 0;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .article-block {
