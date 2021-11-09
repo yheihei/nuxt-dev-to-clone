@@ -1,15 +1,32 @@
 <template>
   <article>
-    <h1>
-      {{ article.title }}
-    </h1>
-    <section v-html="article.body_html" class="article-block__content"></section>
+    <template v-if="$fetchState.pending">
+      <content-placeholders>
+        <content-placeholders-heading></content-placeholders-heading>
+        <content-placeholders-img></content-placeholders-img>
+        <content-placeholders-text :lines="50"></content-placeholders-text>
+      </content-placeholders>
+    </template>
+    <template v-else-if="$fetchState.error">
+      <inline-error-block :error="$fetchState.error"></inline-error-block>
+    </template>
+    <template v-else>
+      <h1>
+        {{ article.title }}
+      </h1>
+      <section v-html="article.body_html" class="article-block__content"></section>
+    </template>
   </article>
 </template>
 
 <script>
 
+import InlineErrorBlock from '@/components/blocks/InlineErrorBlock'
+
 export default {
+  components: {
+    InlineErrorBlock
+  },
   data() {
     return {
       article: {
@@ -27,6 +44,11 @@ export default {
     if (article.id && article.user.username === this.$route.params.username) {
       this.article = article
       this.$store.commit('SET_CURRENT_ARTICLE', this.article)
+    } else {
+      if (process.server) {
+        this.$nuxt.context.res.statusCode = 404
+      }
+      throw new Error('Article not found')
     }
   },
   activated() {
